@@ -1,5 +1,7 @@
 package com.mouredev.weeklychallenge2022
 
+import java.util.*
+
 /*
  * Reto #1
  * ¿ES UN ANAGRAMA?
@@ -25,8 +27,10 @@ fun main() {
 }
 
 private fun isAnagram(wordOne: String, wordTwo: String): Boolean {
-    if (wordOne.toLowerCase() == wordTwo.toLowerCase()) {
+    if (wordOne.equals(wordTwo, ignoreCase = true)) {
         return false
     }
-    return wordOne.toLowerCase().toCharArray().sortedArray().contentEquals(wordTwo.toLowerCase().toCharArray().sortedArray())
+    return wordOne.lowercase(Locale.ROOT)
+        .toCharArray().sortedArray()
+        .contentEquals(wordTwo.lowercase(Locale.ROOT).toCharArray().sortedArray())
 }

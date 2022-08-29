@@ -17,6 +17,7 @@ package com.mouredev.weeklychallenge2022
  *
  */
 
+/** These are my solutions for this challenge **/
 // The gear functions are in reference to One Piece
 fun main(){
     gearOne()
