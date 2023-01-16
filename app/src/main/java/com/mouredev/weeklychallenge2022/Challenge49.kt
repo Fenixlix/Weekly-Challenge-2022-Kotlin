@@ -3,7 +3,7 @@ package com.mouredev.weeklychallenge2022
 /*
  * Reto #49
  * EL DETECTOR DE HANDLES
- * Fecha publicación enunciado: 05/11/22
+ * Fecha publicación enunciado: 05/12/22
  * Fecha publicación resolución: 12/12/22
  * Dificultad: FÁCIL
  *
@@ -21,5 +21,17 @@ package com.mouredev.weeklychallenge2022
  *
  */
 
+fun main() {
+    println(handlesDetector("En esta actividad de @mouredev, resolvemos #retos de #programacion desde https://retosdeprogramacion.com/semanales2022, que @braismoure aloja en www.github.com"))
+}
 
+private fun handlesDetector(text: String): Map<String, List<String>> {
 
+    val handles = mutableMapOf<String, List<String>>()
+
+    handles["user"] = "@(\\w{2,15})".toRegex().findAll(text).toList().map { it.value }
+    handles["hashtag"] = "#[^ !@$^#&,.?():%<>{}\\[\\]|\"]+".toRegex().findAll(text).toList().map { it.value }
+    handles["url"] = "((https?://(www\\.)?)|www\\.)[\\w#+\\=]{2,256}\\.[a-zA-Z]{2,7}[\\w\\/?=&.+-]*".toRegex().findAll(text).toList().map { it.value }
+
+    return handles
+}
